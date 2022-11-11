@@ -41,6 +41,15 @@ class PessoaController{
             return res.status(500).json(error.message)
         }
     }
+    static async deletarPessoa(req, res){
+        const ps = req.params.id;
+        try{
+            await database.Pessoas.destroy({where: {id: ps}});
+            return res.status(200).json("success!");
+        }catch(error){
+            return res.status(500).json(error.message);
+        }
+    }
     
 
 }
