@@ -34,7 +34,7 @@ class PessoaController{
         const ps = req.params.id;
         try{
             await database.Pessoas.update(novosDados, {where: {id: ps}})
-            const dadosAtualizados = await database.Pessoas.findOne({where: {id: sc}});
+            const dadosAtualizados = await database.Pessoas.findOne({where: {id: ps}});
             return res.status(200).json(dadosAtualizados);
 
         }catch(error){
