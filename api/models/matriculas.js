@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const niveis = require('./niveis');
 module.exports = (sequelize, DataTypes) => {
   class Matriculas extends Model {
     /**
@@ -10,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Matriculas.belongsTo(models.Pessoas, {foreignKey: 'estudante_id'});
+      Matriculas.belongsTo(models.Turmas, {foreignKey: 'turma_id'});
     }
   }
   Matriculas.init({
